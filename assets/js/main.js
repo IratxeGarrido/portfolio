@@ -18,11 +18,22 @@ if (navClose) {
 }
 
 /*=============== REMOVE MENU MOBILE ===============*/
+const navLink = document.querySelectorAll('.nav__link')
 
+const linkAction = () =>{
+    const navMenu = document.getElementById('nav-menu')
+    // When we click on each nav__link, we remove the show-menu class
+    navMenu.classList.remove('show-menu')
+}
+navLink.forEach(n => n.addEventListener('click', linkAction))
 
 /*=============== SHADOW HEADER ===============*/
-
-
+const scrollHeader = () => {
+  const header =  document.getElementById('header')
+  this.scrollY >= 50 ? header.classList.add('shadow-header')
+                      : header.classList.remove('shadow-header')
+}
+window.addEventListener('scroll', scrollHeader)
 /*=============== EMAIL JS ===============*/
 
 
