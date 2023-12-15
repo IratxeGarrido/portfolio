@@ -34,8 +34,34 @@ const scrollHeader = () => {
                       : header.classList.remove('shadow-header')
 }
 window.addEventListener('scroll', scrollHeader)
-/*=============== EMAIL JS ===============*/
 
+/*=============== EMAIL JS ===============*/
+const contactForm = document.getElementById('contact-form')
+const contactMessage = document.getElementById('contact-message')
+
+const sendEmail = (e) => {
+  e.preventDefault()
+
+  // serviceID - templateID - #form - publicKey
+  emailjs.sendForm('service_3foc2ym','template_slznptu','#contact-form','Eu0Au_gmY0AuzfxWx')
+  .then(() => {
+    // Show sent message
+    contactMessage.textContent = 'Message sent successfully 🎉'
+
+    // Remove message after 5s
+    setTimeout(() => {
+      contactMessage.textContent = ''
+    }, 5000);
+
+    // Clear input fields
+    contactForm.reset()
+  }, () => {
+    // Show error message
+    contactMessage.textContent = 'Message not sent (service error) ❌'
+  })
+}
+
+contactForm.addEventListener('submit', sendEmail)
 
 /*=============== SHOW SCROLL UP ===============*/
 
